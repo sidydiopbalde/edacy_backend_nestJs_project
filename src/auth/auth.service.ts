@@ -34,6 +34,6 @@ export class AuthService {
     if (!isMatch) throw new UnauthorizedException('Identifiants invalides.');
 
     const token = this.jwtService.sign({ sub: user.id, email: user.email });
-    return { message: 'Connexion réussie.', token };
+    return {user : user, message: 'Connexion réussie.', token };
   }
 }
