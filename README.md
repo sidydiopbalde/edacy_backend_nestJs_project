@@ -25,14 +25,14 @@ npm : Inclus avec Node.js.
 Git : Pour cloner le projet (git-scm.com).
 
 
-Installation
+# Installation
 
 Cloner le dépôt
-git clone <URL_DU_DEPOT>
+git clone <https://github.com/sidydiopbalde/edacy_backend_nestJs_project.git/>
 cd backend-mon-projet
 
 
-Installer les dépendances
+# Installer les dépendances
 npm install
 
 Assurez-vous que les dépendances suivantes sont installées :
@@ -40,7 +40,7 @@ npm install bcrypt @nestjs/jwt
 npm install --save-dev @types/bcrypt
 
 
-Configurer les variables d'environnement
+# Configurer les variables d'environnement
 
 Créez un fichier .env à la racine du projet :JWT_SECRET=your_jwt_secret_key
 PORT=3000
@@ -57,20 +57,31 @@ Le serveur sera accessible sur http://localhost:3000.
 
 
 
-Utilisation
-Endpoints d'authentification
+# Utilisation
+# Endpoints d'authentification
 
 Enregistrement (POST /auth/register) :
 
 Requête :{
-  "email": "user@example.com",
-  "password": "password123"
+        "firstname": "edacy",
+        "lastname": "edacy",
+        "adresse": "vdn",
+        "email": "edacy@example.com",
+        "password": "mot_de_passe"
 }
 
 
 Réponse (201) :{
-  "id": 1,
-  "email": "user@example.com"
+    "message":"Inscription réussie",
+    "user":{
+         "id": 1,
+        "firstname": "edacy",
+        "lastname": "edacy",
+        "adresse": "vdn",
+        "email": "edacy@example.com",
+        "password": "mot_de_passe"
+    },
+  
 }
 
 
@@ -85,12 +96,18 @@ Requête :{
 
 
 Réponse (200) :{
-  "accessToken": "jwt_token_here"
+
+    "user":{
+         "id": 1,
+        "firstname": "edacy",
+        "lastname": "edacy",
+        "adresse": "edacy",
+        "email": "edacy@example.com",
+        "password": "mot_de_passe"
+    },
+    "message":"Connexion réussie",
+    "token":"jwt_token"
 }
-
-
-
-
 
 Endpoints des produits
 
@@ -102,7 +119,6 @@ Réponse (200) :{
     { "id": 2, "name": "Clavier Mécanique", "price": 129, "quantity": 8 }
   ]
 }
-
 
 
 
@@ -143,7 +159,6 @@ Réponse (200) :{
 
 
 
-
 Supprimer un produit (DELETE /product/:id) :
 
 Réponse (200) :{
@@ -152,59 +167,27 @@ Réponse (200) :{
 
 
 
-
-
-
-Tests
-Exécuter les tests
-
-Tests unitaires :npm run test
-
-
-Tests end-to-end (e2e) :npm run test:e2e
-
-
-Couverture des tests :npm run test:cov
-
-
-
-
-Déploiement
-
-Construire pour la production :
-npm run build
-
-
-Lancer en mode production :
-npm run start:prod
-
-
-(Optionnel) Déploiement automatisé :
-
-Installez l'outil mau globalement :npm install -g mau
-
-
-Déployez :mau deploy
-
-
-
-
-
-
-Structure du projet
+# Structure du projet
 backend-mon-projet/
 ├── src/
 │   ├── auth/
-│   │   ├── dto/
-│   │   │   ├── login-user.dto.ts      # DTO pour la connexion
-│   │   │   └── register-user.dto.ts   # DTO pour l'enregistrement
 │   │   ├── auth.controller.ts         # Contrôleur pour l'authentification
 │   │   ├── auth.module.ts             # Module d'authentification
 │   │   └── auth.service.ts            # Service pour l'authentification
 │   ├── product/
 │   │   ├── product.controller.ts      # Contrôleur pour les produits
 │   │   ├── product.module.ts          # Module des produits
-│   │   └── product.service.ts         # Service pour les produits (à implémenter)
+│   │   └── product.service.ts         # Service pour les produits 
+│   │   ├── dto/
+│   │   │   ├── create-product.dto.ts      # DTO pour la creation de produit
+│   │   │   └── update-product.dto.ts   # DTO pour la mise à jour
+|   |   users/
+│   │   ├── users.controller.ts      # Contrôleur pour les produits
+│   │   ├── users.module.ts          # Module des produits
+│   │   └── users.service.ts  
+│   │   ├── dto/
+│   │   │   ├── create-user.dto.ts      # DTO pour la création d'un utilisateur
+│   │   │   └── update-user.dto.ts   # DTO pour la mise à jour
 │   ├── app.module.ts                  # Module racine
 │   ├── main.ts                        # Point d'entrée
 │   └── users/                         # Simulation de base de données (tableau en mémoire)
@@ -215,7 +198,7 @@ backend-mon-projet/
 └── README.md                          # Documentation
 
 
-Dépendances
+# Dépendances
 
 NestJS : Framework pour Node.js.
 bcrypt : Hachage des mots de passe.
@@ -224,14 +207,14 @@ bcrypt : Hachage des mots de passe.
 
 Voir package.json pour la liste complète.
 
-Résolution de problèmes
+# Résolution de problèmes
 
 Erreur de port : Si le port 3000 est occupé, modifiez le PORT dans .env.
 Problème de JWT : Vérifiez que JWT_SECRET est défini dans .env.
 Tests échouent : Assurez-vous que les dépendances de test (jest, @nestjs/testing) sont installées.
 
 
-Contribution
+# Contribution
 
 Forkez le dépôt.
 Créez une branche : git checkout -b ma-fonctionnalité.
@@ -240,8 +223,5 @@ Poussez : git push origin ma-fonctionnalité.
 Créez une Pull Request.
 
 
-Licence
-Licence MIT (ajoutez un fichier LICENSE si nécessaire).
-
-Contact
-Pour des questions, contactez [votre-email@example.com].
+# Contact
+Pour des questions, contactez [sididiop53@gmail.com].
